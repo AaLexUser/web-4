@@ -26,7 +26,7 @@ public class Converter {
         point.setTime(OffsetDateTime.now(ZoneOffset.UTC));
         point.setHitResult(new Checker(point.getX(), point.getY(), point.getR()).checkHit());
         String username = pointDTO.getUsername();
-        User user = userRepository.findById(username).orElseThrow(()-> new UserNotFoundException(username));
+        User user = userRepository.findByUsername(username).orElseThrow(()-> new UserNotFoundException(username));
         point.setUser(user);
         point.setExecutionTime(getCorrectTime((double)(System.nanoTime() - startTime) / 1000000));
         return point;
