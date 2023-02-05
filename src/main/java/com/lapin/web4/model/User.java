@@ -25,6 +25,7 @@ public class User implements UserDetails {
     private String username;
     @Column(nullable = false)
     private String password;
+    private String avatar;
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Point> points;

@@ -28,7 +28,6 @@ public class PointController {
     }
     @GetMapping("/get-points")
     public ResponseEntity<List<PointDTO>> getPoints() {
-        int a = 0;
         return ResponseEntity.ok(pointRepository.findAll().stream().map(point -> converter.PointToPointDTO(point)).toList());
     }
     @PutMapping("/update/{id}")
