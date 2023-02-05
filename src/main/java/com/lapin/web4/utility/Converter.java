@@ -16,10 +16,8 @@ import java.time.ZoneOffset;
 public class Converter {
     @Autowired
     private UserRepository userRepository;
-
-    public Point PointDTOToPoint(PointDTO pointDTO) {
+    public Point PointDTOToPoint(PointDTO pointDTO, Point point){
         long startTime = System.nanoTime();
-        Point point = new Point();
         point.setX(StringToDouble(pointDTO.getX()));
         point.setY(StringToDouble(pointDTO.getY()));
         point.setR(StringToDouble(pointDTO.getR()));
@@ -32,8 +30,13 @@ public class Converter {
         return point;
     }
 
+    public Point PointDTOToPoint(PointDTO pointDTO) {
+        return PointDTOToPoint(pointDTO, new Point());
+    }
+
     public PointDTO PointToPointDTO(Point point) {
         PointDTO pointDTO = new PointDTO();
+        pointDTO.setId(point.getId());
         pointDTO.setX(point.getX().toString());
         pointDTO.setY(point.getY().toString());
         pointDTO.setR(point.getR().toString());

@@ -6,6 +6,7 @@ import com.lapin.web4.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ public class AuthenticationService {
                 )
         );
         var user = repository.findByUsername(request.getUsername())
-                .orElseThrow();
+                .orElseThrow(()->new UsernameNotFoundException(request.getUsername()));
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)

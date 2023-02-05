@@ -21,12 +21,12 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     Long id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
     @Column(nullable = false)
     private String password;
     @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Point> points;
     @Enumerated(EnumType.STRING)
     private Role role;

@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PointDTO {
-    @NotNull
+    private Long id;
     private String username;
     @NotNull
     private String x;
