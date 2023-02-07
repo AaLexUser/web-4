@@ -13,7 +13,7 @@ public class Checker {
         return checkTriangle() || checkRectangle() || checkCircle();
     }
     private boolean checkTriangle() {
-        return x >=0 && y <=0 && (y + x <=(double) r);
+        return x >=0 && y <=0 && (-y + x <=(double) r);
     }
 
     private boolean checkRectangle() {

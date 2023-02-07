@@ -21,17 +21,7 @@ public class PointDTO {
 
     private String executionTime;
 
-    private String hitResult;
+    private boolean hitResult;
 
-    public String isHitResult() {
-        return hitResult;
-    }
-
-    public void setHitResult(String x, String y, String r) {
-        Double xVal = Double.parseDouble(x.replace(",", "."));
-        Double yVal = Double.parseDouble(y.replace(",", "."));
-        Double rVal = Double.parseDouble(r.replace(",", "."));
-        this.hitResult = new Checker(xVal, yVal, rVal).checkHit() ? "true" : "false";
-    }
 
 }

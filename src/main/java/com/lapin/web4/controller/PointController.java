@@ -1,6 +1,7 @@
 package com.lapin.web4.controller;
 
 import com.lapin.web4.DTO.PointDTO;
+import com.lapin.web4.DTO.PointResponse;
 import com.lapin.web4.repository.PointRepository;
 import com.lapin.web4.utility.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ public class PointController {
         pointRepository.save(converter.PointDTOToPoint(pointDTO));
     }
     @GetMapping("/get-points")
-    public ResponseEntity<List<PointDTO>> getPoints() {
-        return ResponseEntity.ok(pointRepository.findAll().stream().map(point -> converter.PointToPointDTO(point)).toList());
+    public ResponseEntity<List<PointResponse>> getPoints() {
+        return ResponseEntity.ok(pointRepository.findAll().stream().map(PointResponse::new).toList());
     }
     @PutMapping("/update/{id}")
     public void updatePoint(

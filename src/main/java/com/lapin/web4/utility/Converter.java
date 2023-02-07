@@ -40,7 +40,7 @@ public class Converter {
         pointDTO.setX(point.getX().toString());
         pointDTO.setY(point.getY().toString());
         pointDTO.setR(point.getR().toString());
-        pointDTO.setHitResult(point.getHitResult() ? "true" : "false");
+        pointDTO.setHitResult(point.getHitResult());
         pointDTO.setTime(point.getTime().toString());
         pointDTO.setExecutionTime(point.getExecutionTime().toString());
         pointDTO.setUsername(point.getUser().getUsername());
