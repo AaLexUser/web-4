@@ -15,7 +15,7 @@ import java.time.OffsetDateTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-public class Point {
+public class Point implements Comparable<Point> {
     @Id
     @GeneratedValue
     private Long id;
@@ -43,4 +43,8 @@ public class Point {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Override
+    public int compareTo(Point o) {
+        return this.time.compareTo(o.time);
+    }
 }

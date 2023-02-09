@@ -35,4 +35,9 @@ public class UserController {
         User user = userRepository.findByUsername(principal.getName()).orElseThrow(()-> new UserNotFoundException(principal.getName()));
         return ResponseEntity.ok(new AvatarResponse(user.getAvatar()));
     }
+    @DeleteMapping("/delete-user")
+    public void deleteUser( Principal principal) {
+        User user = userRepository.findByUsername((principal.getName())).orElseThrow(()-> new UserNotFoundException(principal.getName()));
+        userRepository.deleteById(user.getId());
+    }
 }

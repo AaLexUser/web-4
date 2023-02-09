@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,7 @@ public class PointController {
     }
     @GetMapping("/get-points")
     public ResponseEntity<List<PointResponse>> getPoints() {
-        return ResponseEntity.ok(pointRepository.findAll().stream().map(PointResponse::new).toList());
+        return ResponseEntity.ok(pointRepository.findAll().stream().sorted(Collections.reverseOrder()).map(PointResponse::new).toList());
     }
     @PutMapping("/update/{id}")
     public void updatePoint(

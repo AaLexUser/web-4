@@ -22,7 +22,7 @@ public class PointResponse {
     @NotNull
     private Double r;
 
-    private OffsetDateTime time;
+    private String time;
 
     private BigDecimal executionTime;
 
@@ -34,7 +34,7 @@ public class PointResponse {
         this.x = point.getX();
         this.y = point.getY();
         this.r = point.getR();
-        this.time = point.getTime();
+        this.time = point.getTime().toString();
         this.executionTime = point.getExecutionTime();
         this.hitResult = point.getHitResult();
     }
